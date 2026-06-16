@@ -23,11 +23,52 @@ import "../styles/footer.css";
 
 export default function Home() {
     const [selectedTier, setSelectedTier] = useState("seraphim");
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [message, setMessage] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [status, setStatus] = useState<{ type: "success" | "error"; text: string } | null>(null);
 
-    // Lógica simples de submissão do formulário
-    const handleSubmit = (e: React.FormEvent) => {
+    // Lógica real de submissão do formulário
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        alert("Solicitação de orçamento enviada com sucesso! Nossa equipe entrará em contato em breve.");
+        setLoading(true);
+        setStatus(null);
+
+        try {
+            const response = await fetch("/api/send-email", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email,
+                    message: `Nome: ${name}\nLinha de Painéis Desejada: ${selectedTier}\n\nDetalhes do Projeto:\n${message}`,
+                }),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || "Ocorreu um erro ao enviar.");
+            }
+
+            setStatus({ 
+                type: "success", 
+                text: "Solicitação de orçamento enviada com sucesso! Nossa equipe entrará em contato em breve." 
+            });
+            // Limpa o formulário
+            setName("");
+            setEmail("");
+            setMessage("");
+        } catch (err: any) {
+            setStatus({ 
+                type: "error", 
+                text: err.message || "Falha ao enviar a solicitação. Tente novamente mais tarde." 
+            });
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -186,6 +227,8 @@ export default function Home() {
                                         id="soul-name"
                                         className="form-input"
                                         placeholder="Ex: João da Silva"
+                                        value={name}
+                                        onChange={(e) => setName(e.target.value)}
                                         required
                                     />
                                 </div>
@@ -196,6 +239,8 @@ export default function Home() {
                                         id="email"
                                         className="form-input"
                                         placeholder="Ex: joao@empresa.com"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
                                         required
                                     />
                                 </div>
@@ -221,11 +266,23 @@ export default function Home() {
                                     id="requests"
                                     className="form-textarea"
                                     placeholder="Descreva a finalidade do painel, dimensões estimadas, local de instalação ou outras necessidades específicas..."
+                                    value={message}
+                                    onChange={(e) => setMessage(e.target.value)}
                                 ></textarea>
                             </div>
 
+                            {status && (
+                                <div className={`form-status ${status.type}`}>
+                                    {status.text}
+                                </div>
+                            )}
+
                             <div className="form-submit-container">
-                                <Button text="Enviar Solicitação" />
+                                <Button 
+                                    type="submit"
+                                    text={loading ? "Enviando..." : "Enviar Solicitação"} 
+                                    disabled={loading}
+                                />
                             </div>
                         </form>
                     </div>
