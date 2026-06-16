@@ -1,0 +1,104 @@
+.inquiry-section {
+    padding-block: var(--py-xl);
+    background-color: var(--bg-color);
+}
+
+.inquiry-card {
+    background-color: var(--card-bg);
+    border-radius: 20px;
+    padding: 4rem 3.5rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 136, 255, 0.15);
+    max-width: 850px;
+    margin-inline: auto;
+}
+
+.inquiry-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.form-row-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: relative;
+}
+
+.form-input, .form-select, .form-textarea {
+    font-family: var(--ff-sans);
+    font-size: 0.9rem;
+    color: var(--text-color);
+    padding: 0.75rem 0.5rem;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #334155;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.form-select option {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+.form-input::placeholder, .form-select::placeholder, .form-textarea::placeholder {
+    color: #94A3B8;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-bottom: 2px solid var(--primary-color);
+    box-shadow: none;
+}
+
+.form-label {
+    font-family: var(--ff-sans);
+    font-size: 0.7rem;
+    font-weight: var(--fw-bold);
+    color: var(--second-text-color);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.form-textarea {
+    resize: none;
+    height: 100px;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    background-color: transparent;
+}
+
+.form-textarea:focus {
+    border: 2px solid var(--primary-color);
+}
+
+.form-submit-container {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.form-submit-container button {
+    padding-inline: 4rem;
+}
+
+@media (max-width: 768px) {
+    .inquiry-card {
+        padding: 2.5rem 1.5rem;
+    }
+    
+    .form-row-2 {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+}

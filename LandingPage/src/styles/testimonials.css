@@ -1,0 +1,109 @@
+.voices-section {
+    padding-block: var(--py-xl);
+    background-color: var(--light-gray);
+    border-top: 1px solid rgba(0, 136, 255, 0.1);
+    border-bottom: 1px solid rgba(0, 136, 255, 0.1);
+}
+
+.voices-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 3rem;
+    margin-top: 3.5rem;
+}
+
+.testimonial-card {
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    padding: 3rem;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 136, 255, 0.15);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0, 136, 255, 0.15);
+}
+
+.testimonial-text {
+    font-family: var(--ff-sans);
+    font-size: 1.05rem;
+    color: var(--text-color);
+    line-height: 1.7;
+    position: relative;
+    z-index: 2;
+}
+
+.testimonial-quote-mark {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    color: rgba(0, 136, 255, 0.15);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.testimonial-quote-mark svg {
+    width: 60px;
+    height: 60px;
+    fill: currentColor;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    position: relative;
+    z-index: 2;
+}
+
+.testimonial-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #1E293B;
+    border: 2px solid var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-family: var(--ff-sans);
+    font-weight: var(--fw-bold);
+    font-size: 0.9rem;
+}
+
+.testimonial-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.testimonial-name {
+    font-family: var(--ff-sans);
+    font-size: 0.95rem;
+    font-weight: var(--fw-bold);
+    color: var(--text-color);
+    letter-spacing: 0.02em;
+}
+
+.testimonial-role {
+    font-family: var(--ff-sans);
+    font-size: 0.75rem;
+    color: var(--second-text-color);
+    font-weight: var(--fw-md);
+}
+
+@media (max-width: 768px) {
+    .voices-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .testimonial-card {
+        padding: 2rem;
+    }
+}

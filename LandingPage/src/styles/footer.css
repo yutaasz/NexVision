@@ -1,0 +1,100 @@
+.footer-section {
+    background-color: var(--bg-dark);
+    color: var(--light-text-color);
+    padding-block: 5rem 3.5rem;
+    text-align: center;
+    border-top: 1px solid rgba(0, 136, 255, 0.15);
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
+
+.footer-logo {
+    font-family: var(--ff-serif);
+    font-size: 2rem;
+    font-weight: var(--fw-bold);
+    color: var(--light-text-color);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    position: relative;
+    text-shadow: 0 0 15px rgba(0, 136, 255, 0.3);
+}
+
+.footer-logo span {
+    color: var(--primary-color);
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links a {
+    font-family: var(--ff-sans);
+    color: #94A3B8;
+    font-size: 0.85rem;
+    font-weight: var(--fw-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+    text-shadow: 0 0 8px rgba(0, 136, 255, 0.3);
+}
+
+.footer-slogan {
+    font-family: var(--ff-sans);
+    font-size: 0.75rem;
+    font-weight: var(--fw-bold);
+    color: var(--primary-color);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    line-height: 1.6;
+    margin-block: 0.5rem;
+    max-width: 500px;
+}
+
+.footer-socials {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.footer-icon-link {
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-icon-link svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+.footer-icon-link:hover {
+    color: var(--light-text-color);
+    transform: translateY(-3px);
+    filter: drop-shadow(0 0 8px var(--primary-color));
+}
+
+.footer-copyright {
+    font-family: var(--ff-sans);
+    font-size: 0.65rem;
+    color: #475569;
+    margin-top: 1.5rem;
+}

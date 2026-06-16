@@ -1,0 +1,116 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+    --bg-color: #060913;
+    --bg-dark: #02040a;
+    --text-color: #F8FAFC;
+    --second-text-color: #94A3B8;
+    --light-text-color: #FFFFFF;
+    --light-gray: #0B1120;
+    --card-bg: #0F172A;
+    --primary-color: #0088FF;
+    --primary-hover: #00E5FF;
+    --secondary-color: rgba(0, 136, 255, 0.15);
+
+    --ff-sans: "Outfit", system-ui, sans-serif;
+    --ff-serif: "Space Grotesk", system-ui, sans-serif;
+    --fw-base: 400;
+    --fw-md: 500;
+    --fw-semibold: 600;
+    --fw-bold: 700;
+    --fw-black: 900;
+
+    --fs-sm: 0.875rem;
+    --fs-base: 1rem;
+    --fs-lg: 1.25rem;
+    --fs-xl: 1.75rem;
+    --fs-2xl: 2.25rem;
+
+    --py-sm: 0.875rem;
+    --py-base: 1rem;
+    --py-lg: 1.5rem;
+    --py-xl: 3rem;
+    --px-lg: 1.5rem;
+}
+
+html {
+    font-family: var(--ff-sans);
+    font-weight: var(--fw-base);
+    font-size: var(--fs-base);
+    line-height: 1.6;
+    color: var(--text-color);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color);
+    overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    font-family: var(--ff-serif);
+    line-height: 1.2;
+    color: var(--text-color);
+    font-weight: var(--fw-bold);
+    letter-spacing: -0.02em;
+}
+
+h1 {
+    font-size: var(--fs-2xl);
+}
+
+h2 {
+    font-size: var(--fs-xl);
+}
+
+h3 {
+    font-size: var(--fs-lg);
+}
+
+a {
+    text-decoration: none;
+    color: var(--second-text-color);
+    font-weight: var(--fw-semibold);
+    font-size: var(--fs-sm);
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+img {
+    max-width: 100%;
+    display: inline-block;
+}
+
+ul {
+    list-style: none;
+}
+
+@media (width >= 1280px) {
+    :root {
+        --fs-lg: 2rem;
+        --fs-xl: 2.625rem;
+        --fs-2xl: 4rem;
+
+        --py-sm: 1rem;
+        --py-base: 1.5rem;
+        --py-lg: 2.5rem;
+        --py-xl: 5rem;
+        --pg-lg: 2rem;
+    }
+}

@@ -1,0 +1,149 @@
+.tiers-section {
+    padding-block: var(--py-xl);
+    background-color: var(--bg-color);
+}
+
+.tiers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.tier-card {
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    padding: 3rem 2.25rem;
+    border: 1px solid rgba(0, 136, 255, 0.15);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.tier-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 136, 255, 0.15);
+}
+
+/* Serafim (Destacado) */
+.tier-card.featured {
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 10px 35px rgba(0, 136, 255, 0.3);
+    padding-block: 4rem 3.5rem;
+    transform: scale(1.03);
+    z-index: 10;
+}
+
+.tier-card.featured:hover {
+    transform: scale(1.03) translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 136, 255, 0.45);
+}
+
+.featured-badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    font-family: var(--ff-sans);
+    font-size: 0.7rem;
+    font-weight: var(--fw-bold);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.4rem 1.5rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 136, 255, 0.4);
+    white-space: nowrap;
+}
+
+.tier-name {
+    font-family: var(--ff-serif);
+    font-size: 1.75rem;
+    font-weight: var(--fw-bold);
+    color: var(--text-color);
+    margin-bottom: 0.25rem;
+}
+
+.tier-tagline {
+    font-family: var(--ff-sans);
+    font-size: 0.65rem;
+    font-weight: var(--fw-bold);
+    letter-spacing: 0.1em;
+    color: var(--second-text-color);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+}
+
+.tier-price-box {
+    margin-bottom: 2.5rem;
+}
+
+.tier-price {
+    font-family: var(--ff-serif);
+    font-size: 3rem;
+    font-weight: var(--fw-bold);
+    color: var(--text-color);
+    line-height: 1;
+}
+
+.tier-price-suffix {
+    font-family: var(--ff-sans);
+    font-size: 0.75rem;
+    font-weight: var(--fw-semibold);
+    color: var(--second-text-color);
+    margin-left: 0.35rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.tier-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 3rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    text-align: left;
+}
+
+.tier-features li {
+    font-family: var(--ff-sans);
+    font-size: var(--fs-sm);
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.tier-features svg {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    fill: var(--primary-color);
+}
+
+.tier-card button {
+    width: 100%;
+    margin-top: auto;
+}
+
+@media (max-width: 1024px) {
+    .tiers-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .tier-card.featured {
+        transform: none;
+        padding-block: 3rem 2.25rem;
+    }
+    
+    .tier-card.featured:hover {
+        transform: translateY(-5px);
+    }
+}

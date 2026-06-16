@@ -1,0 +1,192 @@
+.section-title-wrapper {
+    text-align: center;
+    margin-bottom: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.section-title {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: var(--fw-bold);
+    color: var(--text-color);
+    position: relative;
+    padding-bottom: 0.75rem;
+}
+
+.section-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+.section-subtitle {
+    font-family: var(--ff-sans);
+    font-size: var(--fs-sm);
+    color: var(--second-text-color);
+    font-weight: var(--fw-md);
+}
+
+/* Lotes Celestiais Grid */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 5rem;
+}
+
+.portfolio-card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 136, 255, 0.15);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.portfolio-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 136, 255, 0.25);
+    border-color: rgba(0, 136, 255, 0.4);
+}
+
+.portfolio-img-container {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+}
+
+.portfolio-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.portfolio-card:hover .portfolio-img {
+    transform: scale(1.08);
+}
+
+.portfolio-body {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 1rem;
+}
+
+.portfolio-card-title {
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-bold);
+    color: var(--text-color);
+}
+
+.portfolio-card-desc {
+    font-size: var(--fs-sm);
+    color: var(--second-text-color);
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+.portfolio-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: var(--fw-bold);
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.portfolio-card-link svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-card:hover .portfolio-card-link {
+    color: var(--primary-hover);
+}
+
+.portfolio-card:hover .portfolio-card-link svg {
+    transform: translateX(4px);
+}
+
+/* Limiar Celestial */
+.threshold-section {
+    background-color: var(--light-gray);
+    border-radius: 16px;
+    padding: 3rem 2rem;
+    margin-bottom: 5rem;
+    border: 1px solid rgba(0, 136, 255, 0.15);
+}
+
+.threshold-title {
+    font-size: var(--fs-lg);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: var(--fw-bold);
+    color: var(--text-color);
+}
+
+.threshold-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    font-weight: var(--fw-bold);
+    color: var(--second-text-color);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.threshold-center {
+    color: var(--primary-color);
+    font-size: 0.85rem;
+}
+
+.threshold-bar-container {
+    width: 100%;
+    height: 12px;
+    background-color: #1E293B;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.threshold-bar-fill {
+    height: 100%;
+    width: 72%;
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-hover) 100%);
+    border-radius: 6px;
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.6);
+    transition: width 1.5s cubic-bezier(0.1, 0.8, 0.25, 1);
+}
+
+.threshold-sub {
+    font-family: var(--ff-sans);
+    font-size: 0.8rem;
+    color: var(--second-text-color);
+    text-align: center;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .threshold-section {
+        padding: 2rem 1.25rem;
+    }
+}
