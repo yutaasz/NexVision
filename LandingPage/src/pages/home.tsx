@@ -1,21 +1,18 @@
 import { useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { toast, ToastContainer } from "react-toastify";
-import Lottie from "lottie-react";
 import Button from "../components/Button";
 import ProductCard from "../components/ProductCard";
 import TierCard from "../components/TierCard";
 import TestimonialCard from "../components/TestimonialCard";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import LottieHero from "../components/LottieHero";
 
 // Importação das Imagens Geradas por IA
 import HdProIndoor from "../assets/hd_pro_indoor.png";
 import LumixOutdoor from "../assets/lumix_outdoor.png";
 import ApexCreative from "../assets/apex_creative.png";
-
-// Importação da animação Lottie
-import lottietech from "../assets/lottie_tech.json";
 
 // Importação das Folhas de Estilo Modulares
 import "react-toastify/dist/ReactToastify.css";
@@ -104,7 +101,7 @@ export default function Home() {
                         </div>
                     </div>
                     <div className="hero-lottie" aria-hidden="true">
-                        <Lottie animationData={lottietech} loop autoplay />
+                        <LottieHero />
                     </div>
                 </div>
                 <a href="#lotes" className="hero-arrow" aria-label="Rolar para baixo">
