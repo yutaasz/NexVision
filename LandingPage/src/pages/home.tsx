@@ -1,5 +1,7 @@
 import { useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
+import { toast, ToastContainer } from "react-toastify";
+import Lottie from "lottie-react";
 import Button from "../components/Button";
 import ProductCard from "../components/ProductCard";
 import TierCard from "../components/TierCard";
@@ -12,7 +14,11 @@ import HdProIndoor from "../assets/hd_pro_indoor.png";
 import LumixOutdoor from "../assets/lumix_outdoor.png";
 import ApexCreative from "../assets/apex_creative.png";
 
+// Importação da animação Lottie
+import lottietech from "../assets/lottie_tech.json";
+
 // Importação das Folhas de Estilo Modulares
+import "react-toastify/dist/ReactToastify.css";
 import "../styles/header.css";
 import "../styles/utility.css";
 import "../styles/hero.css";
@@ -28,7 +34,6 @@ export default function Home() {
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(false);
-    const [status, setStatus] = useState<{ type: "success" | "error"; text: string } | null>(null);
     const [captchaToken, setCaptchaToken] = useState<string | null>(null);
     const recaptchaRef = useRef<ReCAPTCHA>(null);
 
@@ -37,12 +42,11 @@ export default function Home() {
         e.preventDefault();
 
         if (!captchaToken) {
-            setStatus({ type: "error", text: "Por favor, complete o desafio reCAPTCHA antes de enviar." });
+            toast.error("Por favor, complete o desafio reCAPTCHA antes de enviar.");
             return;
         }
 
         setLoading(true);
-        setStatus(null);
 
         try {
             const response = await fetch("/api/send-email", {
@@ -62,10 +66,7 @@ export default function Home() {
                 throw new Error(data.error || "Ocorreu um erro ao enviar.");
             }
 
-            setStatus({ 
-                type: "success", 
-                text: "Solicitação de orçamento enviada com sucesso! Nossa equipe entrará em contato em breve." 
-            });
+            toast.success("Solicitação enviada! Nossa equipe entrará em contato em breve. ✅");
             // Limpa o formulário e reseta o reCAPTCHA
             setName("");
             setEmail("");
@@ -73,10 +74,7 @@ export default function Home() {
             setCaptchaToken(null);
             recaptchaRef.current?.reset();
         } catch (err: any) {
-            setStatus({ 
-                type: "error", 
-                text: err.message || "Falha ao enviar a solicitação. Tente novamente mais tarde." 
-            });
+            toast.error(err.message || "Falha ao enviar a solicitação. Tente novamente mais tarde.");
         } finally {
             setLoading(false);
         }
@@ -89,26 +87,31 @@ export default function Home() {
 
             {/* 2. Hero Section */}
             <section className="hero-section" id="vision">
-                <div className="hero-content">
-                    <span className="hero-subtitle">Tecnologia Visual de Ponta</span>
-                    <h1 className="hero-title">IMPACTO VISUAL EXTRAORDINÁRIO PARA SEU NEGÓCIO</h1>
-                    <p className="hero-desc">
-                        Eleve a experiência do seu público. Painéis de LED de alta performance com brilho extremo, contraste incrível e durabilidade incomparável para eventos, igrejas e varejo.
-                    </p>
-                    <div className="hero-buttons">
-                        <a href="#lotes">
-                            <Button text="Ver Nossos Painéis" />
-                        </a>
-                        <a href="#plans">
-                            <Button text="Soluções Corporativas" secondary />
-                        </a>
+                <div className="hero-layout">
+                    <div className="hero-content">
+                        <span className="hero-subtitle">Tecnologia Visual de Ponta</span>
+                        <h1 className="hero-title">IMPACTO VISUAL EXTRAORDINÁRIO PARA SEU NEGÓCIO</h1>
+                        <p className="hero-desc">
+                            Eleve a experiência do seu público. Painéis de LED de alta performance com brilho extremo, contraste incrível e durabilidade incomparável para eventos, igrejas e varejo.
+                        </p>
+                        <div className="hero-buttons">
+                            <a href="#lotes">
+                                <Button text="Ver Nossos Painéis" />
+                            </a>
+                            <a href="#plans">
+                                <Button text="Soluções Corporativas" secondary />
+                            </a>
+                        </div>
                     </div>
-                    <a href="#lotes" className="hero-arrow" aria-label="Rolar para baixo">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
-                        </svg>
-                    </a>
+                    <div className="hero-lottie" aria-hidden="true">
+                        <Lottie animationData={lottietech} loop autoplay />
+                    </div>
                 </div>
+                <a href="#lotes" className="hero-arrow" aria-label="Rolar para baixo">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+                    </svg>
+                </a>
             </section>
 
             {/* 3. Portfólio de Soluções (Portfolio) */}
@@ -292,12 +295,6 @@ export default function Home() {
                                 />
                             </div>
 
-                            {status && (
-                                <div className={`form-status ${status.type}`}>
-                                    {status.text}
-                                </div>
-                            )}
-
                             <div className="form-submit-container">
                                 <Button 
                                     type="submit"
@@ -312,6 +309,19 @@ export default function Home() {
 
             {/* 8. Rodapé (Footer) */}
             <Footer />
+
+            {/* Toast Notifications */}
+            <ToastContainer
+                position="bottom-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop
+                closeOnClick
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
         </>
     );
 }

@@ -14,6 +14,24 @@
     overflow: hidden;
 }
 
+.hero-layout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    width: 100%;
+    max-width: 1200px;
+    padding-inline: var(--px-lg);
+    z-index: 2;
+}
+
+.hero-lottie {
+    flex: 0 0 340px;
+    opacity: 0.85;
+    filter: drop-shadow(0 0 30px rgba(0, 136, 255, 0.3));
+    animation: fadeInUp 1s ease-out 0.3s both;
+}
+
 .hero-content {
     max-width: 800px;
     padding-inline: var(--px-lg);
@@ -105,6 +123,15 @@
     .hero-section {
         min-height: 70vh;
         background-attachment: scroll;
+    }
+
+    .hero-layout {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .hero-lottie {
+        display: none;
     }
     
     .hero-buttons {
