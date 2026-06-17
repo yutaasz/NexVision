@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 import Button from "../components/Button";
 import ProductCard from "../components/ProductCard";
 import TierCard from "../components/TierCard";
@@ -28,10 +29,18 @@ export default function Home() {
     const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(false);
     const [status, setStatus] = useState<{ type: "success" | "error"; text: string } | null>(null);
+    const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+    const recaptchaRef = useRef<ReCAPTCHA>(null);
 
     // Lógica real de submissão do formulário
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        if (!captchaToken) {
+            setStatus({ type: "error", text: "Por favor, complete o desafio reCAPTCHA antes de enviar." });
+            return;
+        }
+
         setLoading(true);
         setStatus(null);
 
@@ -57,10 +66,12 @@ export default function Home() {
                 type: "success", 
                 text: "Solicitação de orçamento enviada com sucesso! Nossa equipe entrará em contato em breve." 
             });
-            // Limpa o formulário
+            // Limpa o formulário e reseta o reCAPTCHA
             setName("");
             setEmail("");
             setMessage("");
+            setCaptchaToken(null);
+            recaptchaRef.current?.reset();
         } catch (err: any) {
             setStatus({ 
                 type: "error", 
@@ -271,6 +282,16 @@ export default function Home() {
                                 ></textarea>
                             </div>
 
+                            <div className="form-recaptcha-container">
+                                <ReCAPTCHA
+                                    ref={recaptchaRef}
+                                    sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY ?? ""}
+                                    onChange={(token) => setCaptchaToken(token)}
+                                    onExpired={() => setCaptchaToken(null)}
+                                    theme="dark"
+                                />
+                            </div>
+
                             {status && (
                                 <div className={`form-status ${status.type}`}>
                                     {status.text}
@@ -281,7 +302,7 @@ export default function Home() {
                                 <Button 
                                     type="submit"
                                     text={loading ? "Enviando..." : "Enviar Solicitação"} 
-                                    disabled={loading}
+                                    disabled={loading || !captchaToken}
                                 />
                             </div>
                         </form>
