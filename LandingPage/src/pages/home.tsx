@@ -7,7 +7,6 @@ import TierCard from "../components/TierCard";
 import TestimonialCard from "../components/TestimonialCard";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import LottieHero from "../components/LottieHero";
 
 // Importação das Imagens Geradas por IA
 import HdProIndoor from "../assets/hd_pro_indoor.png";
@@ -84,31 +83,26 @@ export default function Home() {
 
             {/* 2. Hero Section */}
             <section className="hero-section" id="vision">
-                <div className="hero-layout">
-                    <div className="hero-content">
-                        <span className="hero-subtitle">Tecnologia Visual de Ponta</span>
-                        <h1 className="hero-title">IMPACTO VISUAL EXTRAORDINÁRIO PARA SEU NEGÓCIO</h1>
-                        <p className="hero-desc">
-                            Eleve a experiência do seu público. Painéis de LED de alta performance com brilho extremo, contraste incrível e durabilidade incomparável para eventos, igrejas e varejo.
-                        </p>
-                        <div className="hero-buttons">
-                            <a href="#lotes">
-                                <Button text="Ver Nossos Painéis" />
-                            </a>
-                            <a href="#plans">
-                                <Button text="Soluções Corporativas" secondary />
-                            </a>
-                        </div>
+                <div className="hero-content">
+                    <span className="hero-subtitle">Tecnologia Visual de Ponta</span>
+                    <h1 className="hero-title">IMPACTO VISUAL EXTRAORDINÁRIO PARA SEU NEGÓCIO</h1>
+                    <p className="hero-desc">
+                        Eleve a experiência do seu público. Painéis de LED de alta performance com brilho extremo, contraste incrível e durabilidade incomparável para eventos, igrejas e varejo.
+                    </p>
+                    <div className="hero-buttons">
+                        <a href="#lotes">
+                            <Button text="Ver Nossos Painéis" />
+                        </a>
+                        <a href="#plans">
+                            <Button text="Soluções Corporativas" secondary />
+                        </a>
                     </div>
-                    <div className="hero-lottie" aria-hidden="true">
-                        <LottieHero />
-                    </div>
+                    <a href="#lotes" className="hero-arrow" aria-label="Rolar para baixo">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+                        </svg>
+                    </a>
                 </div>
-                <a href="#lotes" className="hero-arrow" aria-label="Rolar para baixo">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
-                    </svg>
-                </a>
             </section>
 
             {/* 3. Portfólio de Soluções (Portfolio) */}
