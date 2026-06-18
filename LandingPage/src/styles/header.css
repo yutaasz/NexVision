@@ -51,15 +51,15 @@
   list-style: none;
   display: flex;
   align-items: center;
-  gap: 3.5rem; /* Aumento generoso no espaçamento para visual luxuoso */
+  gap: 3.5rem;
 }
 
 .nav-links a {
   font-family: var(--ff-sans);
-  color: var(--second-text-color); /* Cinza azulado mais suave */
+  color: var(--second-text-color);
   font-weight: var(--fw-semibold);
-  font-size: 0.72rem; /* Fonte menor e mais refinada */
-  letter-spacing: 0.15em; /* Aumento no espaçamento de letras */
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   padding: 0.5rem 0;
   position: relative;
@@ -84,7 +84,7 @@
 
 .nav-links a.active::after,
 .nav-links a:hover::after {
-  width: 80%; /* Sublinhado chique e parcial de 80% */
+  width: 80%;
 }
 
 .nav-links a:hover {
@@ -161,17 +161,18 @@
     opacity: 0;
     transform: translateY(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-@media (width >= 1280px) {
+@media (width >=1280px) {
   .mobile-menu {
     display: none;
   }
-  
+
   .mobile-menu-content {
     display: none;
   }

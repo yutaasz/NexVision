@@ -287,9 +287,9 @@ export default function Home() {
                             </div>
 
                             <div className="form-submit-container">
-                                <Button 
+                                <Button
                                     type="submit"
-                                    text={loading ? "Enviando..." : "Enviar Solicitação"} 
+                                    text={loading ? "Enviando..." : "Enviar Solicitação"}
                                     disabled={loading || !captchaToken}
                                 />
                             </div>

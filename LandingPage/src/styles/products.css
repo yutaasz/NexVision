@@ -33,7 +33,6 @@
     font-weight: var(--fw-md);
 }
 
-/* Lotes Celestiais Grid */
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -125,7 +124,6 @@
     transform: translateX(4px);
 }
 
-/* Limiar Celestial */
 .threshold-section {
     background-color: var(--light-gray);
     border-radius: 16px;

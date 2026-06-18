@@ -29,7 +29,6 @@
     box-shadow: 0 10px 30px rgba(0, 136, 255, 0.15);
 }
 
-/* Serafim (Destacado) */
 .tier-card.featured {
     border: 2px solid var(--primary-color);
     box-shadow: 0 10px 35px rgba(0, 136, 255, 0.3);
@@ -137,12 +136,12 @@
         grid-template-columns: 1fr;
         gap: 3rem;
     }
-    
+
     .tier-card.featured {
         transform: none;
         padding-block: 3rem 2.25rem;
     }
-    
+
     .tier-card.featured:hover {
         transform: translateY(-5px);
     }
